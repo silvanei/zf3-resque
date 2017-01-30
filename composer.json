@@ -1,0 +1,26 @@
+{
+  "name": "silvanei/zf3-resque",
+  "type": "library",
+  "description": "Resque for zf3",
+  "version": "dev-master",
+  "homepage": "",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Silvanei Soares Santos",
+      "email": "ads.silvanei@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.0",
+    "chrisboulton/php-resque": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "S3\\Zf3Resque\\": "src/"
+    }
+  },
+  "bin": [
+    "bin/zf3resque"
+  ]
+}
