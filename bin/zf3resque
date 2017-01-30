@@ -3,9 +3,9 @@
 
 // Find and initialize Composer
 $files = array(
-    __DIR__ . '/../vendor/autoload.php',
-    __DIR__ . '/../../vendor/autoload.php',
-    __DIR__ . '/../../../vendor/autoload.php',
+    __DIR__ . '/../autoload.php',
+    __DIR__ . '/../../autoload.php',
+    __DIR__ . '/../../../autoload.php',
     __DIR__ . '/../../../../autoload.php',
 );
 
@@ -34,14 +34,7 @@ use Zend\Mvc\Application;
 use Zend\Stdlib\ArrayUtils;
 
 ini_set('display_errors', true);
-chdir(dirname(dirname(dirname(__DIR__))));
-
-while (!file_exists('config/application.config.php')) {
-
-    if ($previousDir === $dir) {
-        die('Unable to locate "config/application.config.php"');
-    }
-}
+chdir(dirname(dirname(dirname(dirname(__DIR__)))));
 
 $appConfig = include 'config/application.config.php';
 if (file_exists('config/development.config.php')) {
