@@ -3,7 +3,7 @@
   "type": "library",
   "description": "Resque for zf3",
   "version": "dev-master",
-  "homepage": "",
+  "homepage": "https://github.com/silvanei/zf3-resque",
   "license": "MIT",
   "authors": [
     {
@@ -13,7 +13,9 @@
   ],
   "require": {
     "php": ">=7.1.0",
-    "chrisboulton/php-resque": "dev-master"
+    "chrisboulton/php-resque": "dev-master",
+    "zendframework/zend-servicemanager": "^3.2",
+    "zendframework/zend-modulemanager": "^2.7"
   },
   "autoload": {
     "psr-4": {

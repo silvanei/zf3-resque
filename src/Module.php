@@ -11,7 +11,6 @@ namespace S3\Zf3Resque;
 
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
-use Zend\ServiceManager\Factory\InvokableFactory;
 use S3\Zf3Resque\Service\ResqueProxyFactory;
 use S3\Zf3Resque\Service\WorkerFactory;
 
@@ -28,8 +27,7 @@ class Module implements ConfigProviderInterface, ServiceProviderInterface
         return [
             'factories' => [
                 'Resque' => ResqueProxyFactory::class,
-                'Worker' => WorkerFactory::class,
-                MyJob::class => InvokableFactory::class,
+                'Worker' => WorkerFactory::class
             ],
         ];
     }
