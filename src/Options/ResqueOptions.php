@@ -17,7 +17,7 @@ class ResqueOptions extends AbstractOptions
     /**
      * @var string
      */
-    protected $server;
+    protected $server = '';
 
     /**
      * @var int
