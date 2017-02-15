@@ -9,12 +9,13 @@
 namespace S3\Zf3Resque\Service;
 
 use Interop\Container\ContainerInterface;
+use S3\Zf3Resque\Options\ResqueOptions;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
-class ResqueProxyFactory implements FactoryInterface
+class ResqueFactory implements FactoryInterface
 {
 
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null) : ResqueProxy
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null) : \Resque
     {
         /** @var array $config */
         $config = $container->get('Configuration');
@@ -24,9 +25,14 @@ class ResqueProxyFactory implements FactoryInterface
             $config = $config['zf3_resque'];
         }
 
-        $resque_proxy = new ResqueProxy($config);
-        $resque_proxy->connect();
+        $options = new ResqueOptions($config);
 
-        return $resque_proxy;
+        $resque = new \Resque();
+        $resque->setBackend(
+            $options->getServer(),
+            $options->getDatabase()
+        );
+
+        return $resque;
     }
 }
