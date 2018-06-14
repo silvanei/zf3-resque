@@ -14,13 +14,19 @@ pipeline {
         sh 'php -r "unlink(\'composer-setup.php\');"'
         sh 'mv composer.phar /usr/local/bin/composer'
         sh 'pecl install xdebug-2.6.0 && docker-php-ext-enable xdebug '
-        sh 'docker-php-ext-install -j$(nproc) pcntl'
+        sh 'docker-php-ext-install -j$(nproc) pcntl pdo pdo_mysql opcache intl zip'
       }
     }
 
     stage('composer install') {
       steps {
         sh 'composer install'
+      }
+    }
+
+    stage('composer install') {
+      steps {
+        sh 'vendor/bin/phpunit'
       }
     }
   }
