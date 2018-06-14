@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('prepare') {
       steps {
-        sh 'php -v'
+        sh 'set -e && apt-get update && apt-get install -my  git'
         sh 'php -r "copy(\'https://getcomposer.org/installer\', \'composer-setup.php\');"'
         sh 'php composer-setup.php'
         sh 'php -r "unlink(\'composer-setup.php\');"'
