@@ -1,19 +1,20 @@
 pipeline {
   agent {
     docker {
-      image 'php:7.2-cli'
+      image 'teste:dev'
     }
 
   }
   stages {
-    stage('teste') {
+    stage('composer install') {
       steps {
-        sh 'php -v'
-        sh 'php -r "copy(\'https://getcomposer.org/installer\', \'composer-setup.php\');"'
-        sh 'php composer-setup.php'
-        sh 'php -r "unlink(\'composer-setup.php\');"'
-        sh 'mv composer.phar /usr/local/bin/composer'
-        sh 'php -v'
+        sh 'composer install'
+      }
+    }
+
+    stage('PHPUnit') {
+      steps {
+        sh 'vendor/bin/phpunit'
       }
     }
   }
