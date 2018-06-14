@@ -13,7 +13,7 @@ pipeline {
         sh 'php composer-setup.php'
         sh 'php -r "unlink(\'composer-setup.php\');"'
         sh 'mv composer.phar /usr/local/bin/composer'
-        sh 'pecl install xdebug-2.6.0 && docker-php-ext-enable xdebug \'
+        sh 'pecl install xdebug-2.6.0 && docker-php-ext-enable xdebug '
         sh 'docker-php-ext-install -j$(nproc) pcntl'
       }
     }
