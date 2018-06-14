@@ -6,7 +6,7 @@ pipeline {
 
   }
   stages {
-    stage('teste') {
+    stage('prepare') {
       steps {
         sh 'php -v'
         sh 'php -r "copy(\'https://getcomposer.org/installer\', \'composer-setup.php\');"'
@@ -14,6 +14,12 @@ pipeline {
         sh 'php -r "unlink(\'composer-setup.php\');"'
         sh 'mv composer.phar /usr/local/bin/composer'
         sh 'php -v'
+      }
+    }
+
+    stage('composer install') {
+      steps {
+        sh 'composer install'
       }
     }
   }
