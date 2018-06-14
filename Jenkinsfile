@@ -24,7 +24,7 @@ pipeline {
       }
     }
 
-    stage('composer install') {
+    stage('PHPUnit') {
       steps {
         sh 'vendor/bin/phpunit'
       }
