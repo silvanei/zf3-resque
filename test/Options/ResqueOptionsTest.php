@@ -26,8 +26,7 @@ class ResqueOptionsTest extends TestCase
     {
         $options = new ResqueOptions();
         $this->assertEquals('', $options->getServer());
-        $this->assertEquals(0, $options->getDatabase());
-        $this->assertEquals(0, $options->getDatabase());
+        $this->assertEquals(1, $options->getDatabase());
     }
 
     public function testSetConstructParameters()
