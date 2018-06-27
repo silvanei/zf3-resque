@@ -11,11 +11,11 @@ pipeline {
         docker {
           image 'php:7.2-cli'
         }
-        steps {
-          sh 'php -v'
-          sh 'echo Unit Test'
-        }
       }
+      steps {
+        sh 'php -v'
+        sh 'echo Unit Test'
+      }      
     }
     stage('Deploy') {
       when {
