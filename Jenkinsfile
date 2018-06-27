@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Unit Test') {
       steps {
-        sh 'echo Test'
+        sh 'echo Unit Test'
       }
     }
     stage('Deploy') {
@@ -17,6 +17,7 @@ pipeline {
                    ok: 'Fire away'
         
         sh 'echo deploy production'
+        sh 'echo Notifying the Team!'
       }
     }
   }
