@@ -7,8 +7,14 @@ pipeline {
       }
     }
     stage('Unit Test') {
-      steps {
-        sh 'echo Unit Test'
+      agent {
+        docker {
+          image 'php:7.2-cli'
+        }
+        steps {
+          sh 'php -v'
+          sh 'echo Unit Test'
+        }
       }
     }
     stage('Deploy') {
